@@ -1,0 +1,24 @@
+{
+    "name": "ronangr1/module-add-fake-text-button",
+    "description": "Add fake text button to Magento 2",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ronan Guérin",
+            "email": "guerin.ronan@aol.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "fakerphp/faker": "^1.19"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ronangr1\\AddFakeTextButton\\": ""
+        }
+    }
+}

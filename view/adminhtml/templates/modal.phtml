@@ -1,0 +1,30 @@
+<?php declare(strict_types=1);
+/**
+ * Copyright © Ronan Guérin. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal $block */
+
+?>
+
+<div id="fakeTextGenerator">
+    <div class="overlay" x-show="isModalOpen">
+        <div
+            class="modal"
+            role="dialog"
+            tabindex="-1"
+            x-cloak
+        >
+            <div class="model-inner" x-on:click.away="isModalOpen = false">
+                <div class="modal-header">
+                    <h3 class="modal-title"><?= __('Generate Fake Text') ?></h3>
+                    <button aria-label="<?= __('Close') ?>" @click="isModalOpen=false">✖</button>
+                </div>
+                <div class="modal-content">
+                    <?= $block->getChildHtml('faketext.modal.form') ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

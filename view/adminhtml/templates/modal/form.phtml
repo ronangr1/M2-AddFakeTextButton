@@ -1,0 +1,119 @@
+<?php declare(strict_types=1);
+/**
+ * Copyright © Ronan Guérin. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal\Form $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+?>
+
+<div x-data="{isAddTitleActive: false, isParagraphActive: false}">
+    <form x-data="modalForm()" action="<?= $escaper->escapeJs($block->getUrlAction()) ?>"
+          @submit.prevent="generateFakeText">
+        <div class="message message-warning warning" x-text="formMessage" x-show="formMessage.length"></div>
+        <fieldset class="fieldset">
+            <div class="field">
+                <label class="label">
+                    <input type="checkbox" value="" class="input input-checkbox" name="add_title"
+                           @click="isAddTitleActive = ! isAddTitleActive" x-model="formData.title">
+                    <span><?= __('Add a title') ?></span>
+                </label>
+                <div x-show="isAddTitleActive">
+                    <label class="label">
+                        <input type="text" class="input-text" value="" x-model="title" readonly>
+                    </label>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">
+                    <input type="checkbox" value="" class="input input-checkbox" name="add_text"
+                           @click="isParagraphActive = ! isParagraphActive" x-model="formData.text">
+                    <span><?= __('Add a text') ?></span>
+                </label>
+                <div x-show="isParagraphActive">
+                    <label>
+                        <textarea class="textarea" x-model="text" readonly></textarea>
+                    </label>
+                </div>
+            </div>
+            <div class="actions" x-show="isParagraphActive || isAddTitleActive">
+                <div class="generate">
+                    <button :disabled="formLoading" class="button primary" x-text="buttonText"></button>
+                </div>
+                <div class="insert" x-show="generated">
+                    <button class="button secondary" @click="insertFakeText; isModalOpen=false"><?= __('Insert') ?></button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script>
+    function modalForm() {
+        return {
+            formData: {
+                title: "",
+                text: "",
+            },
+            formUrl: "<?= $escaper->escapeUrl($block->getUrlAction()) ?>",
+            formLoading: false,
+            formMessage: "",
+            title: "",
+            text: "",
+            generated: false,
+            buttonText: "<?= __('Generate') ?>",
+            generateFakeText() {
+                const defaultButtonText = this.buttonText
+                this.buttonText = "<?= __('Generating...') ?>";
+                this.formLoading = true
+                fetch(this.formUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-Requested-With": "XMLHttpRequest"
+                    },
+                    body: JSON.stringify(this.formData),
+                }).then((res) => {
+                    if (res.status >= 200 && res.status < 300) {
+                        return res.json()
+                    } else {
+                        throw new Error();
+                    }
+                }).then((data) => {
+                    if (typeof data.title !== "undefined") {
+                        this.title = data.title.charAt(0).toUpperCase() + data.title.slice(1)
+                        this.title = "<h2>" + this.title + "</h2>"
+                    }
+                    if (typeof data.text !== "undefined") {
+                        this.text = "<p>" + data.text + "</p>"
+                    }
+                }).catch(() => {
+                    this.formMessage = "Something went wrong.";
+                }).finally(() => {
+                    this.formLoading = false;
+                    this.formMessage = "";
+                    this.generated = true;
+                    this.buttonText = defaultButtonText
+                });
+            },
+
+            insertFakeText(e) {
+                e.preventDefault()
+                const fakeTextButtonElement = document.querySelector('.action-add-faketext');
+                const parent = fakeTextButtonElement.parentNode;
+
+                let textareaContent = parent.nextSibling.nextSibling.value
+                if (typeof this.title !== "undefined" || this.title === "") {
+                    textareaContent += this.title
+                }
+                if (typeof this.text !== "undefined" || this.title === "") {
+                    textareaContent += "\n" + this.text
+                }
+
+                parent.nextSibling.nextSibling.value = textareaContent
+            }
+        }
+    }
+</script>

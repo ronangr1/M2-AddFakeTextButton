@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="x-data" value="{'isModalOpen': false}"/>
+        <attribute name="x-on:keydown.escape" value="isModalOpen=false"/>
+    </body>
+    <referenceContainer name="content">
+        <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal" name="faketext.modal" template="Ronangr1_AddFakeTextButton::modal.phtml" ifconfig="fake_text/general/enable">
+            <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal\Form" name="faketext.modal.form" template="Ronangr1_AddFakeTextButton::modal/form.phtml" />
+        </block>
+    </referenceContainer>
+    <referenceContainer name="before.body.end">
+        <block class="Magento\Backend\Block\Template" name="init_alpine" template="Ronangr1_AddFakeTextButton::script.phtml" ifconfig="fake_text/general/enable"/>
+    </referenceContainer>
+</page>
