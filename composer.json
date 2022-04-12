@@ -1,8 +1,9 @@
 {
     "name": "ronangr1/module-add-fake-text-button",
-    "description": "Add fake text button to Magento 2",
+    "description": "Add a button that allows to generate fake text.",
     "type": "magento2-module",
     "license": "MIT",
+    "version": "0.0.1",
     "authors": [
         {
             "name": "Ronan Guérin",
