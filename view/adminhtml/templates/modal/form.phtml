@@ -101,18 +101,15 @@
 
             insertFakeText(e) {
                 e.preventDefault()
-                const fakeTextButtonElement = document.querySelector('.action-add-faketext');
-                const parent = fakeTextButtonElement.parentNode;
-
-                let textareaContent = parent.nextSibling.nextSibling.value
+                const textarea = document.querySelector('[name="content"]');
+                let textareaContent = textarea.value
                 if (typeof this.title !== "undefined" || this.title === "") {
-                    textareaContent += this.title
+                    textareaContent += "\n" + this.title
                 }
                 if (typeof this.text !== "undefined" || this.title === "") {
                     textareaContent += "\n" + this.text
                 }
-
-                parent.nextSibling.nextSibling.value = textareaContent
+                textarea.value = textareaContent
             }
         }
     }
