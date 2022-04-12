@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ronan Guérin. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <fake_text>
+            <general>
+                <enable>
+                    1
+                </enable>
+            </general>
+            <assets>
+                <styles>
+                    0
+                </styles>
+                <alpinejs>
+                    1
+                </alpinejs>
+            </assets>
+        </fake_text>
+    </default>
+</config>

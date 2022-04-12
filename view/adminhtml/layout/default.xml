@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+
+    </head>
     <body>
         <attribute name="x-data" value="{'isModalOpen': false}"/>
         <attribute name="x-on:keydown.escape" value="isModalOpen=false"/>
@@ -10,6 +13,13 @@
         </block>
     </referenceContainer>
     <referenceContainer name="before.body.end">
-        <block class="Magento\Backend\Block\Template" name="init_alpine" template="Ronangr1_AddFakeTextButton::script.phtml" ifconfig="fake_text/general/enable"/>
+        <block class="Magento\Framework\View\Element\Template" name="assets.styles" template="Ronangr1_AddFakeTextButton::assets/styles.phtml" ifconfig="fake_text/assets/styles"/>
+        <block class="Magento\Framework\View\Element\Text" name="assets.alpinejs"  ifconfig="fake_text/assets/alpinejs">
+            <action method="setText">
+                <argument name="text" xsi:type="string">
+                    <![CDATA[<script src="//unpkg.com/alpinejs" defer></script>]]>
+                </argument>
+            </action>
+        </block>
     </referenceContainer>
 </page>
