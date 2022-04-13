@@ -52,10 +52,21 @@ The configuration for this module is available in `Stores > Configuration > Rona
 
 ## Documentation
 
-### ToDo
+### How to add the button
 
-* Unit tests
+Example on `cms_block_form.xml`:
 
+```xml
+<field name="content" formElement="wysiwyg">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="wysiwygConfigData" xsi:type="array">
+                <item name="add_faketext" xsi:type="boolean">true</item>
+            </item>
+        </item>
+    </argument>
+</field>
+```
 
 ## Support
 
