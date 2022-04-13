@@ -1,8 +1,7 @@
 # Add Fake Text Button (Module for Magento 2)
-
-[![Latest Stable Version](https://img.shields.io/packagist/v/opengento/module-module.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-add-fake-text-button)
-[![License: MIT](https://img.shields.io/github/license/opengento/magento2-module.svg?style=flat-square)](./LICENSE)
-[![Packagist](https://img.shields.io/packagist/dt/opengento/module-module.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-add-fake-text-button/stats)
+[![Latest Stable Version](https://img.shields.io/packagist/v/ronangr1/module-add-fake-text-button.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-add-fake-text-button)
+[![License: MIT](https://img.shields.io/github/license/ronangr1/M2-AddFakeTextButton.svg?style=flat-square)](./LICENSE) 
+[![Packagist](https://img.shields.io/packagist/dt/ronangr1/module-add-fake-text-button.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-add-fake-text-button/stats)
 
 
 
