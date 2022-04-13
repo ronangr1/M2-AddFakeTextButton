@@ -14,9 +14,9 @@
                 </enable>
             </general>
             <assets>
-                <styles>
-                    0
-                </styles>
+                <tailwind>
+                    1
+                </tailwind>
                 <alpinejs>
                     1
                 </alpinejs>

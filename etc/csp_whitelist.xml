@@ -11,6 +11,7 @@
         <policy id="script-src">
             <values>
                 <value id="alpinejs" type="host">unpkg.com/alpinejs</value>
+                <value id="tailwindcss" type="host">cdn.tailwindcss.com</value>
             </values>
         </policy>
     </policies>

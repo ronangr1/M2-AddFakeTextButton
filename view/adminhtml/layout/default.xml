@@ -5,22 +5,40 @@
  * See COPYING.txt for license details.
  */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <attribute name="x-data" value="{'isModalOpen': false}"/>
         <attribute name="x-on:keydown.escape" value="isModalOpen=false"/>
     </body>
     <referenceContainer name="content">
-        <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal" name="faketext.modal" template="Ronangr1_AddFakeTextButton::modal.phtml" ifconfig="fake_text/general/enable">
-            <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal\Form" name="faketext.modal.form" template="Ronangr1_AddFakeTextButton::modal/form.phtml" />
+        <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal" name="faketext.modal"
+               template="Ronangr1_AddFakeTextButton::modal.phtml" ifconfig="fake_text/general/enable">
+            <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal\Form" name="faketext.modal.form"
+                   template="Ronangr1_AddFakeTextButton::modal/form.phtml"/>
         </block>
     </referenceContainer>
     <referenceContainer name="before.body.end">
-        <block class="Magento\Framework\View\Element\Template" name="assets.styles" template="Ronangr1_AddFakeTextButton::assets/styles.phtml" ifconfig="fake_text/assets/styles"/>
-        <block class="Magento\Framework\View\Element\Text" name="assets.alpinejs"  ifconfig="fake_text/assets/alpinejs">
+        <block class="Magento\Framework\View\Element\Text" name="assets.alpinejs" ifconfig="fake_text/assets/alpinejs">
             <action method="setText">
                 <argument name="text" xsi:type="string">
                     <![CDATA[<script src="//unpkg.com/alpinejs" defer></script>]]>
+                </argument>
+            </action>
+        </block>
+        <block class="Magento\Framework\View\Element\Text" name="assets.tailwind" ifconfig="fake_text/assets/tailwind">
+            <action method="setText">
+                <argument name="text" xsi:type="string">
+                    <![CDATA[
+                          <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+                          <style type="text/tailwindcss">
+                            @layer utilities {
+                              .content-auto {
+                                content-visibility: auto;
+                              }
+                            }
+                        </style>
+                    ]]>
                 </argument>
             </action>
         </block>

@@ -8,20 +8,22 @@
 
 ?>
 
-<div id="fakeTextGenerator">
-    <div class="overlay" x-show="isModalOpen">
+<div class="lg:content-auto" x-show="isModalOpen">
+    <div class="fixed top-0 left-0 right-0 w-full h-full bg-gray-700/50 flex items-center justify-center z-[9999]">
         <div
-            class="modal"
+            class="bg-white radius rounded-xl shadow-2xl p-10 w-[768px]"
             role="dialog"
             tabindex="-1"
             x-cloak
         >
-            <div class="modal-inner" x-on:click.away="isModalOpen = false">
-                <div class="modal-header">
-                    <h3 class="modal-title"><?= __('Generate Fake Text') ?></h3>
-                    <button aria-label="<?= __('Close') ?>" @click="isModalOpen=false">✖</button>
+            <div x-on:click.away="isModalOpen = false">
+                <div class="pb-7 mb-8 border-b border-neutral-200 flex justify-between">
+                    <h3 class="text-4xl font-semibold"><?= __('Generate Fake Text') ?></h3>
+                    <div class="cursor-pointer">
+                        <span @click="isModalOpen=false"><?= __('Close') ?></span>
+                    </div>
                 </div>
-                <div class="modal-content">
+                <div class="mt-5">
                     <?= $block->getChildHtml('faketext.modal.form') ?>
                 </div>
             </div>
