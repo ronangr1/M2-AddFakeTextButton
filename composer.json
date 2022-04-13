@@ -3,7 +3,7 @@
     "description": "Add a button that allows to generate fake text.",
     "type": "magento2-module",
     "license": "MIT",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "authors": [
         {
             "name": "Ronan Guérin",
