@@ -57,9 +57,9 @@ class Editor extends \Magento\Framework\Data\Form\Element\Editor
      */
     protected function _getPluginButtonsHtml($visible = true): string
     {
-        $parent = parent::_getPluginButtonsHtml($visible);
+        $html = parent::_getPluginButtonsHtml($visible);
         if ($this->isFakeTextButtonEnable()) {
-            $html = '';
+            $childHtml = '';
             if ($this->getConfig('add_faketext')) {
 
                 $buttonData = [
@@ -69,13 +69,13 @@ class Editor extends \Magento\Framework\Data\Form\Element\Editor
                     'style' => $visible ? '' : 'display:none',
                 ];
 
-                $html .= $this->secureRenderer->renderTag('button', $buttonData, $buttonData['title']);
+                $childHtml .= $this->secureRenderer->renderTag('button', $buttonData, $buttonData['title']);
 
-                $parent .= $html;
+                $html .= $childHtml;
             }
         }
 
-        return $parent;
+        return $html;
     }
 
     private function isFakeTextButtonEnable(): bool

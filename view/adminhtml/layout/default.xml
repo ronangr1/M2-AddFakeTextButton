@@ -12,9 +12,9 @@
         <attribute name="x-on:keydown.escape" value="isModalOpen=false"/>
     </body>
     <referenceContainer name="content">
-        <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal" name="faketext.modal"
-               template="Ronangr1_AddFakeTextButton::modal.phtml" ifconfig="fake_text/general/enable">
-            <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal\Form" name="faketext.modal.form"
+        <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal" name="ronangr1.addfaketext.modal"
+               template="Ronangr1_AddFakeTextButton::modal.phtml">
+            <block class="Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal\Form" name="ronangr1.addfaketext.form"
                    template="Ronangr1_AddFakeTextButton::modal/form.phtml"/>
         </block>
     </referenceContainer>
@@ -23,22 +23,6 @@
             <action method="setText">
                 <argument name="text" xsi:type="string">
                     <![CDATA[<script src="//unpkg.com/alpinejs" defer></script>]]>
-                </argument>
-            </action>
-        </block>
-        <block class="Magento\Framework\View\Element\Text" name="assets.tailwind" ifconfig="fake_text/assets/tailwind">
-            <action method="setText">
-                <argument name="text" xsi:type="string">
-                    <![CDATA[
-                          <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-                          <style type="text/tailwindcss">
-                            @layer utilities {
-                              .content-auto {
-                                content-visibility: auto;
-                              }
-                            }
-                        </style>
-                    ]]>
                 </argument>
             </action>
         </block>

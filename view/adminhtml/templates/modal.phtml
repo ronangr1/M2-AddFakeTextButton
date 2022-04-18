@@ -4,27 +4,29 @@
  * See COPYING.txt for license details.
  */
 
-/** @var \Ronangr1\AddFakeTextButton\Block\Adminhtml\Modal $block */
+/** @var \Ronangr1\Ui\Block\Adminhtml\Modal $block */
 
 ?>
 
 <div class="lg:content-auto" x-show="isModalOpen">
-    <div class="fixed top-0 left-0 right-0 w-full h-full bg-gray-700/50 flex items-center justify-center z-[9999]">
+    <div class="fixed top-0 left-0 right-0 w-full h-full bg-modalBackgroundColor flex items-center justify-center z-9999">
         <div
-            class="bg-white radius rounded-xl shadow-2xl p-10 w-[768px]"
+            class="bg-white radius rounded-xl shadow-2xl p-10 w-256"
             role="dialog"
             tabindex="-1"
             x-cloak
         >
-            <div x-on:click.away="isModalOpen = false">
+            <div @click.away="isModalOpen = false">
                 <div class="pb-7 mb-8 border-b border-neutral-200 flex justify-between">
-                    <h3 class="text-4xl font-semibold"><?= __('Generate Fake Text') ?></h3>
+                    <h3 class="text-4xl font-semibold">
+                        <span><?= __('Generate Fake Text') ?></span>
+                    </h3>
                     <div class="cursor-pointer">
                         <span @click="isModalOpen=false"><?= __('Close') ?></span>
                     </div>
                 </div>
                 <div class="mt-5">
-                    <?= $block->getChildHtml('faketext.modal.form') ?>
+                    <?= $block->getChildHtml() ?>
                 </div>
             </div>
         </div>
