@@ -10,9 +10,8 @@
 ?>
 
 <div x-data="{isAddTitleActive: false, isParagraphActive: false}">
-    <form x-data="modalForm()" action="<?= $escaper->escapeJs($block->getUrlAction()) ?>"
-          @submit.prevent="generateFakeText">
-        <div class="message message-warning warning" x-text="formMessage" x-show="formMessage.length"></div>
+    <form x-data="modalForm()" @submit.prevent="generateFakeText">
+        <div x-text="formMessage" x-show="formMessage.length"></div>
         <fieldset class="fieldset">
             <div class="mb-10">
                 <label class="text-2xl">
