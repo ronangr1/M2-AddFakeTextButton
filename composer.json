@@ -3,7 +3,7 @@
     "description": "Add a button that allows to generate fake text.",
     "type": "magento2-module",
     "license": "MIT",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "authors": [
         {
             "name": "Ronan Guérin",
@@ -12,8 +12,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "ronangr1/module-backend": "*",
         "ronangr1/module-tailgento": "*",
+        "ronangr1/module-backend": "*",
         "fakerphp/faker": "^1.19"
     },
     "autoload": {
